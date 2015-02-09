@@ -5,6 +5,7 @@ use Yii;
 use yii\helpers\Html;
 use yii\base\Widget;
 use yii\helpers\Json;
+use yii\base\InvalidConfigException;
 
 /**
  * Class NextButton
@@ -32,6 +33,10 @@ class NextButton extends Widget
     public function init()
     {
         parent::init();
+
+        if (!isset($this->scriptOptions['ajax']['url'])) {
+            throw new InvalidConfigException('jQuery ajax url must by specified.');
+        }
 
         $this->registerAsset();
         $this->registerClientScript();

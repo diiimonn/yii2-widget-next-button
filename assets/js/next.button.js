@@ -4,12 +4,11 @@
             ajax: {
                 url: '/',
                 type: 'GET',
-                data: {}
-            },
-            errorMessage: 'Error',
-            success: null,
-            successError: null,
-            error: null
+                data: {},
+                success: null,
+                successError: null,
+                error: null
+            }
         }, o);
 
         return this.each(function(i, el) {
@@ -39,7 +38,7 @@
                             }
                         } else {
                             if ($.isFunction(options.successError)) {
-                                options.successError(result);
+                                options.successError(result, widget.get(0), el);
                             }
                         }
                     },
