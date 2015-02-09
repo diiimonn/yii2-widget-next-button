@@ -33,18 +33,18 @@
                                 el.page = result.page;
                             }
 
-                            if ($.isFunction(options.success)) {
-                                options.success(result, widget.get(0), el);
+                            if ($.isFunction(options.ajax.success)) {
+                                options.ajax.success(result, widget.get(0), el);
                             }
                         } else {
-                            if ($.isFunction(options.successError)) {
-                                options.successError(result, widget.get(0), el);
+                            if ($.isFunction(options.ajax.successError)) {
+                                options.ajax.successError(result, widget.get(0), el);
                             }
                         }
                     },
                     error: function(xhr) {
-                        if ($.isFunction(options.error)) {
-                            options.error(xhr);
+                        if ($.isFunction(options.ajax.error)) {
+                            options.ajax.error(xhr);
                         }
                     }
                 }).always(function(){
