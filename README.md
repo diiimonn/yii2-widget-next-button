@@ -117,15 +117,19 @@ use yii\helpers\Url;
 ...
 
 <?php $nextButton = NextButton::begin([
-    'buttonOptions' => [
-        'class' => 'my-button-class',
-    ],
+    'buttonContent' => Yii::t('app', 'Show next ...'),
+    'buttonOptions' => [/* button tag options */],
     'isNext' => $isNext,
     'scriptOptions' => [
         'ajax' => [
             'url' => Url::toRoute(['next', /* other params */]), // Url for ajax request to actionNext in SiteController. Required parameter
         ],
-    ]
+    ],
+    'options' => [/* widget tag options */],
+    'containerOptions' => [/* container tag for items options */],
+    'buttonContainerOptions' => [],
+    'buttonBlockOptions' => [], // for example ['class' => 'row']
+    'buttonWrapOptions' => [], // for example ['class' => 'col-md-6 col-md-offset-3']
 ]) ?>
 
 <?= $this->render('_items', [
