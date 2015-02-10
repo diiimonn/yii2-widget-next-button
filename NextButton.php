@@ -20,6 +20,9 @@ class NextButton extends Widget
     public $buttonOptions = [];
 
     public static $buttonContainerOptions = [];
+    public static $buttonBlockOptions = [];
+    public static $buttonWrapOptions = [];
+    public $buttonContent = '';
 
     public $scriptOptions = [];
 
@@ -41,6 +44,10 @@ class NextButton extends Widget
         $this->registerAsset();
         $this->registerClientScript();
 
+        if (empty($this->buttonContent)) {
+            $this->buttonContent = Yii::t('app', 'Show next ...');
+        }
+
         $this->options['id'] = $this->id;
         Html::addCssClass($this->options, 'nb__container');
 
@@ -55,7 +62,7 @@ class NextButton extends Widget
     {
         Html::addCssClass($this->buttonOptions, 'nb__button');
 
-        return $this->isNext ? Html::a('+ ' . Yii::t('app', 'Show next ...'), '#', $this->buttonOptions) : '';
+        return $this->isNext ? Html::a($this->buttonContent, '#', $this->buttonOptions) : '';
     }
 
     public static function end()
@@ -66,8 +73,8 @@ class NextButton extends Widget
 
         echo Html::beginTag('div', static::$buttonContainerOptions);
 
-        echo Html::beginTag('div', ['class' => 'row']);
-        echo Html::beginTag('div', ['class' => 'col-md-6 col-md-offset-3']);
+        echo Html::beginTag('div', static::$buttonBlockOptions);
+        echo Html::beginTag('div', static::$buttonWrapOptions);
 
         $widget = parent::end();
 
