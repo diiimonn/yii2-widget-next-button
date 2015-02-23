@@ -4,6 +4,8 @@
     "keywords": ["next", "button", "jquery", "ajax", "yii2", "extension", "widget"],
     "homepage": "https://github.com/diiimonn/yii2-widget-next-button",
     "type": "yii2-extension",
+    "minimum-stability": "dev",
+    "version": "v1.0.0",
     "authors": [
         {
             "name": "Dmitriy Gavrilenko",
